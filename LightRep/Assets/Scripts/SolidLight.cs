@@ -8,6 +8,6 @@ public class SolidLight : MonoBehaviour
 
     private void Update()
     {
-        
+        //phone code lol
     }
 }
