@@ -621,7 +621,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50db4dd8fcb16fa4086f09d7def5d535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intensity: 0
+  duration: 5
+  activated: 0
+  bridge: {fileID: 1354159777}
 --- !u!1 &332966601
 GameObject:
   m_ObjectHideFlags: 0
@@ -3970,6 +3972,18 @@ MonoBehaviour:
       - m_Target: {fileID: 572150798}
         m_TargetAssemblyTypeName: MovingPlatform, Assembly-CSharp
         m_MethodName: StartMoving
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 292596983}
+        m_TargetAssemblyTypeName: SolidLight, Assembly-CSharp
+        m_MethodName: ToggleState
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
