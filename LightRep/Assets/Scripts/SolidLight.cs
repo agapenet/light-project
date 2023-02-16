@@ -37,6 +37,7 @@ public class SolidLight : MonoBehaviour
             StartCoroutine(FadeOut());
             return;
         }
+       // return;
        // StartCoroutine(FadeIn());
     }
 
@@ -53,4 +54,5 @@ public class SolidLight : MonoBehaviour
         yield return null;
         activated = false;
     }
+    // this really doesn't need to be a coroutine
 }
