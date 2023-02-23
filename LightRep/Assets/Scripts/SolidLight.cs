@@ -6,6 +6,8 @@ using UnityEngine.Rendering.Universal;
 
 public class SolidLight : MonoBehaviour
 {
+    [SerializeField] private Collider2D bridgeCollider;
+
     public float duration;
     private float fadeTime;
     public bool activated = false;
@@ -13,6 +15,7 @@ public class SolidLight : MonoBehaviour
 
     private void Start()
     {
+        bridgeCollider.enabled = false;
         bridge.intensity = 0;
     }
 
@@ -27,32 +30,37 @@ public class SolidLight : MonoBehaviour
         if (activated == false)
         {
             Debug.Log("Starting fade in");
-            StartCoroutine(FadeIn());
+            bridge.intensity = 1;
+            bridgeCollider.enabled = true;
+            activated = true;
             return;
         }
 
         if (activated == true)
         {
-            Debug.Log("Starting fade in");
-            StartCoroutine(FadeOut());
+            Debug.Log("Starting fade out");
+            bridge.intensity = 0;
+            bridgeCollider.enabled = false;
+            activated = false;
             return;
         }
        // return;
        // StartCoroutine(FadeIn());
     }
 
-    IEnumerator FadeIn()
+    public void FadeIn()
     {
         bridge.intensity = Mathf.Lerp(0, 1, fadeTime);
-        yield return null;
         activated = true;
+        return;
+        //gave up on this
     }
 
-    IEnumerator FadeOut()
+    public void FadeOut()
     {
         bridge.intensity = Mathf.Lerp(1, 0, fadeTime);
-        yield return null;
         activated = false;
+        return;
+        //gave up on this
     }
-    // this really doesn't need to be a coroutine
 }
