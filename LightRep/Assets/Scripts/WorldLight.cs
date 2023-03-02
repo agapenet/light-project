@@ -8,6 +8,10 @@ public class WorldLight : MonoBehaviour
 {
     private UnityEngine.Experimental.Rendering.Universal.Light2D guideLight;
 
+    private bool on = false;
+    private float fadeAmount;
+    public float fadeSpeed = 1f;
+
     void Start()
     {
         
@@ -20,12 +24,13 @@ public class WorldLight : MonoBehaviour
 
         if(gameObject != null)
         {
-           guideLight.intensity = 1;
+            on = true;
         }
     }
 
-    private void OnEnable()
+    void Update()
     {
-        
-    }
+        fadeAmount = guideLight.intensity + (fadeSpeed * Time.deltaTime);
+        guideLight.intensity = fadeAmount;
+    } //eh do I need it though?
 }

@@ -6,9 +6,14 @@ public class WL_Point : MonoBehaviour
 {
     public GameObject guidePrefab;
     private GameObject guide;
+    private bool on;
 
     public void ActivateGuide()
     {
-        guide = Instantiate<GameObject>(guidePrefab, transform.position, transform.rotation);
+        if (!on)
+        {
+            guide = Instantiate<GameObject>(guidePrefab, transform.position, transform.rotation);
+            on = true;
+        }
     }
 }
