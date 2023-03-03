@@ -8,29 +8,27 @@ public class WorldLight : MonoBehaviour
 {
     private UnityEngine.Experimental.Rendering.Universal.Light2D guideLight;
 
-    private bool on = false;
-    private float fadeAmount;
+    [SerializeField] private float fadeAmount;
+
     public float fadeSpeed = 1f;
 
     void Start()
     {
-        
+        guideLight = GetComponent<UnityEngine.Experimental.Rendering.Universal.Light2D>();
+        guideLight.intensity = 0;
     }
 
     void Awake()
     {
-        guideLight = GetComponent<UnityEngine.Experimental.Rendering.Universal.Light2D>();
-        guideLight.intensity = 0;
-
-        if(gameObject != null)
-        {
-            on = true;
-        }
+       
     }
 
-    void Update()
+    private void Update()
     {
-        fadeAmount = guideLight.intensity + (fadeSpeed * Time.deltaTime);
-        guideLight.intensity = fadeAmount;
+        if(guideLight.intensity <= 1)
+        {
+            fadeAmount = guideLight.intensity + (fadeSpeed * Time.deltaTime);
+            guideLight.intensity = fadeAmount;
+        }
     } //eh do I need it though?
 }
