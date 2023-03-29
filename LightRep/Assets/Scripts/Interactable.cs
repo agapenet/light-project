@@ -11,14 +11,16 @@ public class Interactable : MonoBehaviour
     public UnityEvent interactAction;
     public GameObject interactTip;
 
+    public GameObject buttonLight;
+
     void Start()
     {
-        
+
     }
 
     void Awake()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -49,6 +51,14 @@ public class Interactable : MonoBehaviour
         {
             Debug.Log("Out of range");
             isInRange = false;
+        }
+    }
+
+    public void buttonLightToggle ()
+    {
+        if (buttonLight.activeInHierarchy == false)
+        {
+            buttonLight.SetActive(true);
         }
     }
 }
