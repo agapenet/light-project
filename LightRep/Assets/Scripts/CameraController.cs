@@ -19,16 +19,12 @@ public class CameraController : MonoBehaviour
     {
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
 
-        //Application.targetFrameRate = 60;
+        Application.targetFrameRate = 120;
         QualitySettings.vSyncCount = 0;
         main.orthographic = true;
     }
-    void Update()
+    private void Update()
     {
-        float Vertical = Input.GetAxisRaw("Vertical");
-
-        Vector3 targetPosition = player.position + offset;
-
         if (Input.GetKey(KeyCode.LeftShift) && sizeAdjustment < 10)
         {
             sizeAdjustment += .1f * smoothTime * zoomSpeed;
@@ -40,6 +36,13 @@ public class CameraController : MonoBehaviour
             sizeAdjustment -= sizeAdjustment;
             playerController.freeze = 1;
         }
+    }
+
+    void FixedUpdate()
+    {
+        float Vertical = Input.GetAxisRaw("Vertical");
+
+        Vector3 targetPosition = player.position + offset;
 
         //Follows player smoothly
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
