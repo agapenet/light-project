@@ -34,6 +34,16 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         rb.velocity = new Vector2(horizontal * speed * freeze, rb.velocity.y);
+
+        if (Input.GetButtonDown("Jump") && hangCounter > 0)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        }
+
+        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * .7f);
+        }
     }
 
     //Jump is in here too, but im too lazy to bring it out
@@ -46,16 +56,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             hangCounter -= Time.deltaTime;
-        }
-
-        if (Input.GetButtonDown("Jump") && hangCounter > 0)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        }
-
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * .7f);
         }
     }
 }

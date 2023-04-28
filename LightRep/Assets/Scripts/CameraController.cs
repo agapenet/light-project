@@ -19,7 +19,8 @@ public class CameraController : MonoBehaviour
     {
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
 
-        Application.targetFrameRate = 120;
+        //Application.targetFrameRate = 120;
+        //I changed time step from 0.02 to 0.001 to remedy stutter
         QualitySettings.vSyncCount = 0;
         main.orthographic = true;
     }
